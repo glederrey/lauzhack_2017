@@ -12,21 +12,127 @@
         stroke-width: 1.5px;
     }
 
+    #viz {
+        display: inline-block;
+        width: 100%;
+        background:palevioletred;
+    }
 </style>
 <head>
     <meta charset="UTF-8">
-    <title>TEST</title>
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Fraud Detection - Manual Inspection - Credit Suisse @ LauzHack 2017</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap theme -->
+    <link href="bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="theme.css" rel="stylesheet">
+
+    <script src="http://www.w3schools.com/lib/w3data.js"></script>
+
+    <!--d3 and others -->
+    <script src="http://d3js.org/d3.v4.min.js"></script>
+    <script type="text/javascript" src="ext/jq.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
+
+    <!-- Toogle button-->
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+    <!-- Font Awesome-->
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+
+    <!-- Footer -->
+    <link href="sticky-footer-navbar.css" rel="stylesheet">
 </head>
 <body>
 
-<div class="col-sm-7">
+<div class="jumbotron" id="title">
+    <h1 class="display-3">Swiss Parliament Visualization</h1>
+    <h3>Prototyping a Visualisation of the Swiss Parliament data</h3>
+    <img src="assets/img/logo_high_res.png" width="70%">
+</div>
+
+<div class="container large-container" role="main" id="visualization">
+    <div id="visualisation">
+        <div class="row">
+
+            <!-- Filter panel -->
+            <div class="col-sm-2">
+                <div id="choices">
+
+                </div>
+            </div><!-- /.col-sm-4 -->
+
+
+            <!-- Visualization -->
+            <div class="col-sm-7">
+                <div id="viz"></div>
+            </div><!-- /.col-sm-4 -->
+
+            <!-- Identification Card-->
+            <div class="col-sm-3 well well-sm">
+                <div id="content">
+                    <!-- Personal Card -->
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <!--Bio-->
+                            <div id='bio' class='bio'>
+                                <h4><a target="_blank" href="" id='name'></a></h4>
+                                <i class="fa fa-users" aria-hidden="true"></i> <span id='councilorParty'></span>
+                                <br>
+                                <i class="fa fa-home" aria-hidden="true"></i> <span id='councilorCanton'></span>
+                                <br>
+                                <i class="fa fa-briefcase" aria-hidden="true"></i> <span id='councilorCouncil'></span>
+                                <br>
+                                <i class="fa fa-birthday-cake" aria-hidden="true"></i> <span
+                                    id='councilorBirthday'></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <!-- Profile Picture -->
+                            <div>
+                                <img id='councilorImage' src="img/person-260.jpg" width="100%">
+                            </div>
+                            <div class="divline"></div>
+                        </div>
+                    </div>
+
+                    <!-- Interventions graph-->
+                    <hr>
+                    <div id='int_timeline'>
+                        <span id='timeline_info'></span>
+                        <svg id='int_graph' width="100%" height="130px"></svg>
+                    </div>
+                    <div class="divline"></div>
+
+                    <!-- Initiative graph -->
+                    <hr>
+                    <div id='div_theme'>
+                        <span id='interest_info'></span>
+                        <span id='test'></span>
+                        <svg id='themes' width="100%" height="200px"></svg>
+                    </div>
+                    <div class="divline"></div>
+
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.col-sm-4 -->
+    </div>
+
+</div> <!-- /container -->
+<div>
     <div id="viz"></div>
 </div>
 
 <script src="main.js"></script>
+<script src="functions.js"></script>
 
 </body>
 </html>

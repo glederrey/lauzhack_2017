@@ -25,16 +25,6 @@ var simulation = d3.forceSimulation().alphaDecay(0)
     .force("collision", d3.forceCollide().radius(radius+2*padding).iterations(5).strength(0.1))
     .force("link", d3.forceLink().id(function(d) { return d.id; }).distance(100).strength(0));
 
-// Load the info about the nodes
-var nodes_info;
-function importNodesInfo(json) {
-    $.getJSON(json, function(d) {
-        nodes_info = d;
-    })
-}
-
-importNodesInfo('../json/nodes.json');
-
 var nodes;
 var links;
 
@@ -42,101 +32,102 @@ var colors = {'suspect': '#FF0000',
     'accomplice': '#FFDD00',
     'usual': '#BFBFBF'};
 
-d3.json("../json/inout2.json", function(error, graph) {
-    if (error) throw error;
+$.getJSON('../json/nodes.json', function(nodes_info) {
+    d3.json("../json/1.json", function(error, graph) {
+        if (error) throw error;
 
-    nodes = graph.nodes;
-    links = graph.links;
+        nodes = graph.nodes;
+        links = graph.links;
 
-    for(var i=0; i<nodes.length; i++) {
-        // Add additional fields in the JSON object
-        nodes[i]["x"] = 0.5 * width;
-        nodes[i]["y"] = 0.5 * height;
-        nodes[i]["radius"] = radius;
-    }
+        for(var i=0; i<nodes.length; i++) {
+            // Add additional fields in the JSON object
+            nodes[i]["x"] = 0.5 * width;
+            nodes[i]["y"] = 0.5 * height;
+            nodes[i]["radius"] = radius;
+        }
 
-    _.each(links, function(link) {
+        _.each(links, function(link) {
 
-        // find other links with same target+source or source+target
-        var same = _.where(links, {
-            'source': link.source,
-            'target': link.target
+            // find other links with same target+source or source+target
+            var same = _.where(links, {
+                'source': link.source,
+                'target': link.target
+            });
+            var sameAlt = _.where(links, {
+                'source': link.target,
+                'target': link.source
+            });
+            var sameAll = same.concat(sameAlt);
+
+            _.each(sameAll, function(s, i) {
+                s.sameIndex = (i + 1);
+                s.sameTotal = sameAll.length;
+                s.sameTotalHalf = (s.sameTotal / 2);
+                s.sameUneven = ((s.sameTotal % 2) !== 0);
+                s.sameMiddleLink = ((s.sameUneven === true) && (Math.ceil(s.sameTotalHalf) === s.sameIndex));
+                s.sameLowerHalf = (s.sameIndex <= s.sameTotalHalf);
+                s.sameArcDirection = s.sameLowerHalf ? 0 : 1;
+                s.sameIndexCorrected = s.sameLowerHalf ? s.sameIndex : (s.sameIndex - Math.ceil(s.sameTotalHalf));
+            });
         });
-        var sameAlt = _.where(links, {
-            'source': link.target,
-            'target': link.source
-        });
-        var sameAll = same.concat(sameAlt);
 
-        _.each(sameAll, function(s, i) {
-            s.sameIndex = (i + 1);
-            s.sameTotal = sameAll.length;
-            s.sameTotalHalf = (s.sameTotal / 2);
-            s.sameUneven = ((s.sameTotal % 2) !== 0);
-            s.sameMiddleLink = ((s.sameUneven === true) && (Math.ceil(s.sameTotalHalf) === s.sameIndex));
-            s.sameLowerHalf = (s.sameIndex <= s.sameTotalHalf);
-            s.sameArcDirection = s.sameLowerHalf ? 0 : 1;
-            s.sameIndexCorrected = s.sameLowerHalf ? s.sameIndex : (s.sameIndex - Math.ceil(s.sameTotalHalf));
+        var maxSame = _.chain(links)
+            .sortBy(function(x) {
+                return x.sameTotal;
+            })
+            .last()
+            .value().sameTotal;
+
+        _.each(links, function(link) {
+            link.maxSameHalf = Math.floor(maxSame / 3);
         });
+
+        var link = svg.append("g")
+            .attr("class", "links")
+            .selectAll("line")
+            .data(graph.links)
+            .enter().append("path")
+            .attr("stroke-width", 2)//function(d) { return Math.sqrt(d.group); })
+            .attr("fill", function(d) {return "none";})
+            .attr("stroke", function(d) { return colors[d.tag]; });
+
+        var node = svg.append("g")
+            .attr("class", "nodes")
+            .selectAll("circle")
+            .data(graph.nodes)
+            .enter().append("circle")
+            .attr("r", 5)
+            .attr("fill", function(d) { return colors[d.tag]; })
+            .call(d3.drag()
+                .on("start", dragstarted)
+                .on("drag", dragged)
+                .on("end", dragended))
+            .on("click", clicked)
+            .on("mouseover", emphasisAndShowInfo);
+
+        link.append("title")
+            .text(function(d) { return 1;});
+
+        simulation
+            .nodes(graph.nodes)
+            .on("tick", ticked);
+
+        simulation.force("link")
+            .links(graph.links);
+
+        svg.on("dblclick", dbclick);
+
+        function ticked() {
+            link.attr("d", linkArc);
+
+            node
+                .each(gravity())
+                .attr("cx", function(d) { return d.x; })
+                .attr("cy", function(d) { return d.y; });
+        }
     });
+})
 
-    var maxSame = _.chain(links)
-        .sortBy(function(x) {
-            return x.sameTotal;
-        })
-        .last()
-        .value().sameTotal;
-
-    _.each(links, function(link) {
-        link.maxSameHalf = Math.floor(maxSame / 3);
-    });
-
-    var link = svg.append("g")
-        .attr("class", "links")
-        .selectAll("line")
-        .data(graph.links)
-        .enter().append("path")
-        .attr("stroke-width", 2)//function(d) { return Math.sqrt(d.group); })
-        .attr("fill", function(d) {return "none";})
-        .attr("stroke", function(d) { return colors[d.tag]; });
-
-    var node = svg.append("g")
-        .attr("class", "nodes")
-        .selectAll("circle")
-        .data(graph.nodes)
-        .enter().append("circle")
-        .attr("r", 5)
-        .attr("fill", function(d) { return colors[d.tag]; })
-        .call(d3.drag()
-            .on("start", dragstarted)
-            .on("drag", dragged)
-            .on("end", dragended))
-        .on("click", clicked);
-
-    node.append("title")
-        .text(function(d) { return nodes_info[d.id]["type"];});
-
-    link.append("title")
-        .text(function(d) { return d.linknum; });
-
-    simulation
-        .nodes(graph.nodes)
-        .on("tick", ticked);
-
-    simulation.force("link")
-        .links(graph.links);
-
-    svg.on("dblclick", dbclick);
-
-    function ticked() {
-        link.attr("d", linkArc);
-
-        node
-            .each(gravity())
-            .attr("cx", function(d) { return d.x; })
-            .attr("cy", function(d) { return d.y; });
-    }
-});
 
 function linkArc(d) {
     var dx = (d.target.x - d.source.x),
