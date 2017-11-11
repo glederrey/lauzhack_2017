@@ -1,25 +1,3 @@
-<!DOCTYPE html>
-<meta charset="utf-8">
-<style>
-
-.links line {
-  stroke: #999;
-  stroke-opacity: 0.6;
-}
-
-.nodes circle {
-  stroke: #fff;
-  stroke-width: 1.5px;
-}
-
-</style>
-<svg width="960" height="600"></svg>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
-<script src="https://d3js.org/d3.v4.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-<script>
-
 var width = 960;
 var height = 600;
 
@@ -28,7 +6,7 @@ var radius = 6,
     padding = 1; // Distance between the nodes
 
 var foci = {'source': {"x": 0.4*width, "y": 0.5*height},
-            'target': {"x": 0.6*width, "y": 0.5*height}};
+    'target': {"x": 0.6*width, "y": 0.5*height}};
 
 var svg = d3.select("div#viz")
     .append("div")
@@ -40,14 +18,12 @@ var svg = d3.select("div#viz")
     //class to make it responsive
     .classed("svg-content-responsive", true);
 
-var color = d3.scaleOrdinal(d3.schemeCategory20);
-
 var simulation = d3.forceSimulation().alphaDecay(0)
-        // Decay in velocity in order to avoid the nodes to giggle
-        .velocityDecay(0.1)
-        // Collision forces in order to avoid overlap
-        .force("collision", d3.forceCollide().radius(radius+2*padding).iterations(5).strength(0.1))
-        .force("link", d3.forceLink().id(function(d) { return d.id; }).distance(100).strength(0));
+// Decay in velocity in order to avoid the nodes to giggle
+    .velocityDecay(0.1)
+    // Collision forces in order to avoid overlap
+    .force("collision", d3.forceCollide().radius(radius+2*padding).iterations(5).strength(0.1))
+    .force("link", d3.forceLink().id(function(d) { return d.id; }).distance(100).strength(0));
 
 // Load the info about the nodes
 var nodes_info;
@@ -63,8 +39,8 @@ var nodes;
 var links;
 
 var colors = {'suspect': '#FF0000',
-              'accomplice': '#FFDD00',
-              'usual': '#BFBFBF'};
+    'accomplice': '#FFDD00',
+    'usual': '#BFBFBF'};
 
 d3.json("../json/inout2.json", function(error, graph) {
     if (error) throw error;
@@ -116,26 +92,26 @@ d3.json("../json/inout2.json", function(error, graph) {
     });
 
     var link = svg.append("g")
-      .attr("class", "links")
-    .selectAll("line")
-    .data(graph.links)
-    .enter().append("path")
-      .attr("stroke-width", 2)//function(d) { return Math.sqrt(d.group); })
-      .attr("fill", function(d) {return "none";})
-      .attr("stroke", function(d) { return colors[d.tag]; });
+        .attr("class", "links")
+        .selectAll("line")
+        .data(graph.links)
+        .enter().append("path")
+        .attr("stroke-width", 2)//function(d) { return Math.sqrt(d.group); })
+        .attr("fill", function(d) {return "none";})
+        .attr("stroke", function(d) { return colors[d.tag]; });
 
     var node = svg.append("g")
-      .attr("class", "nodes")
-    .selectAll("circle")
-    .data(graph.nodes)
-    .enter().append("circle")
-      .attr("r", 5)
-      .attr("fill", function(d) { return colors[d.tag]; })
-      .call(d3.drag()
-          .on("start", dragstarted)
-          .on("drag", dragged)
-          .on("end", dragended))
-      .on("click", clicked);
+        .attr("class", "nodes")
+        .selectAll("circle")
+        .data(graph.nodes)
+        .enter().append("circle")
+        .attr("r", 5)
+        .attr("fill", function(d) { return colors[d.tag]; })
+        .call(d3.drag()
+            .on("start", dragstarted)
+            .on("drag", dragged)
+            .on("end", dragended))
+        .on("click", clicked);
 
     node.append("title")
         .text(function(d) { return nodes_info[d.id]["type"];});
@@ -250,7 +226,3 @@ function gravity() {
 
     };
 }
-
-
-</script>
-
