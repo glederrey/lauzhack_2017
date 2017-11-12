@@ -37,7 +37,7 @@ var nodes_info,
 
 $.getJSON('../json/nodes.json', function(json) {
     nodes_info = json;
-    $.getJSON('../json/ranked_list.json', function(json) {
+    $.getJSON('../json/ranked_list2.json', function(json) {
         ranked_list = json;
 
         // Load the ranked list
@@ -147,6 +147,7 @@ function main(file_fraud, id, score) {
 
         var link = svg.append("g")
             .attr("class", "links")
+            .attr("id", function(d, i) {return "edge" + i;})
             .selectAll("line")
             .data(graph.links)
             .enter().append("path")
@@ -195,6 +196,48 @@ function main(file_fraud, id, score) {
             .on("click", clicked)
             .on("mouseover", emphasisAndShowInfo);
 
+        var edgepaths = svg.selectAll(".edgepath")
+            .data(graph.links)
+            .enter()
+            .append('path')
+            .attrs({
+                'class': 'edgepath',
+                'fill-opacity': 0,
+                'stroke-opacity': 0,
+                'id': function (d, i) {return 'edgepath' + i}
+            })
+            .style("pointer-events", "none");
+
+        var edgelabels = svg.selectAll(".edgelabel")
+            .data(graph.links)
+            .enter()
+            .append('text')
+            .attr("dy", -3)
+            .attr("tag", function(d) {return d.tag;})
+            .style("pointer-events", "none")
+            .attrs({
+                'class': 'edgelabel',
+                'id': function(d) {
+                    return d.source + " " + d.target;
+                },
+                'font-size': 10,
+                'fill': '#000000',
+                'opacity': 0
+                });
+
+        edgelabels.append('textPath')
+            .attr('xlink:href', function (d, i) {return '#edgepath' + i})
+            .style("text-anchor", "middle")
+            .style("pointer-events", "none")
+            .attr("startOffset", "50%")
+            .text(function (d, i) {
+                var str = d.date + " " + d.time + " - " + round(d.amount);
+                if (d.currency != "None") {
+                    str += " " + d.currency;
+                }
+
+                return str; });
+
         // Transitions
 
         node.transition()
@@ -215,6 +258,15 @@ function main(file_fraud, id, score) {
             .duration(function(d, i) {return 300 + (i+2)*100;})
             .attr("opacity", 1);
 
+        edgelabels.transition()
+            .duration(function(d, i) {return 1000 + (i+2)*100;})
+            .attr("opacity", function(d) {
+                if (d.tag == 'accomplice') {
+                    return 1;
+                } else {
+                    return 0;
+                }});
+
         simulation
             .nodes(graph.nodes)
             .on("tick", ticked);
@@ -231,7 +283,10 @@ function main(file_fraud, id, score) {
                 .each(gravity())
                 .attr("cx", function(d) { return d.x; })
                 .attr("cy", function(d) { return d.y; });
+
+            edgepaths.attr('d', linkArc);
         }
+
     });
 }
 
@@ -247,8 +302,27 @@ function linkArc(d) {
         arc = 0;
     }
 
-    return "M" + d.source.x + "," + d.source.y + "A" + arc + "," + 0 + " 0 0," + d.sameArcDirection + " " + d.target.x + "," + d.target.y;
+    return "M" + d.source.x + "," + d.source.y + "A" + arc + "," + arc + " 0 0," + d.sameArcDirection + " " + d.target.x + "," + d.target.y;
 }
+
+function linkArcSwp(d, swapped) {
+    var dx = (d.target.x - d.source.x),
+        dy = (d.target.y - d.source.y),
+        dr = Math.sqrt(dx * dx + dy * dy),
+        unevenCorrection = (d.sameUneven ? 0 : 0.5),
+        arc = ((dr * d.maxSameHalf) / (d.sameIndexCorrected - unevenCorrection));
+
+    if (d.sameMiddleLink) {
+        arc = 0;
+    }
+
+    if (swapped == true) {
+        arc = -arc;
+    }
+
+    return "M" + d.source.x + "," + d.source.y + "A" + arc + "," + arc + " 0 0," + d.sameArcDirection + " " + d.target.x + "," + d.target.y;
+}
+
 
 function clicked(d) {
 
