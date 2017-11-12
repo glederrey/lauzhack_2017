@@ -138,3 +138,11 @@ h1, h2, h3 {
     direction:rtl;
     text-align:justify;
 }
+
+#score{
+    font-weight: bold;
+}
+
+#message{
+    font-style: italic;
+}

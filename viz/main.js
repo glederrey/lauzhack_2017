@@ -54,14 +54,19 @@ $.getJSON('../json/nodes.json', function(json) {
 
         var id = ranked_list[0]["id"];
         var file_fraud = id + ".json";
+        var score = ranked_list[0]["score"]
 
-        main(file_fraud, id);
+        main(file_fraud, id, score);
 
     });
 });
 
-function main(file_fraud, id) {
+function main(file_fraud, id, score) {
+    emphasisSuspect(id);
+    document.getElementById("score").innerHTML = round(score);
+
     d3.json("../json/" + file_fraud, function(error, graph) {
+        document.getElementById("message").innerHTML = graph.message;
         if (error) throw error;
 
         nodes = graph.nodes;
@@ -170,10 +175,18 @@ function main(file_fraud, id) {
             .selectAll("circle")
             .data(graph.nodes)
             .enter().append("circle")
+            .attr("class", "dataNodes")
             .attr("r", function(d) { return d.radius; })
             .attr("fill", function(d) { return colors[d.tag]; })
             .attr("stroke", function(d) { return "#000000"; })
-            .attr("stroke-width", 2)
+            .attr("stroke-width", function(d, i) {
+                if (i==0) {
+                    return 2;
+                } else {
+                    return 0;
+                }
+            })
+            //.attr("stroke-width", 2)
             .attr("opacity", 0)
             .call(d3.drag()
                 .on("start", dragstarted)
