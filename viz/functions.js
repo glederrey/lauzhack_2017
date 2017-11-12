@@ -41,8 +41,6 @@ function emphasis(info) {
         var name = info['first_name'] + " " + info['last_name'];
         var hash = name.hashCode().mod(99+99+9);
 
-        console.log(hash);
-
         var url;
         if (hash < 99) {
             url = "https://randomuser.me/api/portraits/women/" + hash + ".jpg"
@@ -73,9 +71,11 @@ function emphasis(info) {
 }
 
 function selectUser(button) {
-    var file_fraud = button.val() + ".json";
+    var arr = button.val().split('_');
+    var file_fraud = arr[0]+ ".json";
     svg.selectAll("*").remove();
-    main(file_fraud, button.val() );
+
+    main(file_fraud, arr[0], arr[1]);
 }
 
 function round(value) {
