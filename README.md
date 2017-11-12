@@ -1,5 +1,5 @@
 # Lauzhack 2017
-Credit Suisse Pattern Recognition algorithm
+# Credit Suisse Money Laundering Pattern Recognition Algorithm
 
 # Introduction
 
