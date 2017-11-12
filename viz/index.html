@@ -1,32 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-<style>
-
-    .links line {
-        stroke: #999;
-        stroke-opacity: 0.6;
-    }
-
-    .nodes circle {
-        stroke: #fff;
-        stroke-width: 1.5px;
-    }
-
-</style>
 <head>
     <meta charset="UTF-8">
-    <title>TEST</title>
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Fraud Detection - Credit Suisse @ LauzHack 2017</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap theme -->
+    <link href="bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="theme.css" rel="stylesheet">
+
+    <script src="http://www.w3schools.com/lib/w3data.js"></script>
+
+    <!--d3 and others -->
+    <script src="http://d3js.org/d3.v4.min.js"></script>
+    <script type="text/javascript" src="ext/jq.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
+    <script src="http://d3js.org/d3-selection-multi.v1.js"></script>
+
+    <!-- Toogle button-->
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+    <!-- Font Awesome-->
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+
+    <!-- Footer -->
+    <link href="sticky-footer-navbar.css" rel="stylesheet">
 </head>
 <body>
 
-<div class="col-sm-7">
+<div class="jumbotron" id="title">
+    <h1 class="display-3">Fraud Detection</h1>
+    <h3>Credit Suisse Project @ LauzHack 17</h3>
+    <img src="img/logo.png" width="50%">
+
+</div>
+
+<div class="container large-container" role="main" id="visualization">
+    <div id="visualisation">
+        <div class="row">
+
+            <!-- Filter panel -->
+            <div class="col-sm-2">
+                <div id="choices">
+                    <h4>Ranked List:</h4>
+                    <form name="ranked">
+                        <div class="form-group">
+                            <select class="form-control" id="userSelection" onchange="selectUser($(this))">
+                            </select>
+                        </div>
+                    </form>
+                    <h4>Score: <span id="score">?</span>/1.5</h4>
+                    <h4>Message: </h4>
+                    <p id="message"></p>
+                    <br>
+                    <h4><b>Feedback:</b></h4>
+                    <p><em>Is it a real Fraud?</em></p>
+                    <button class="feed" id="right" onclick="show_thank_you()"><i class="fa fa-check" aria-hidden="true"></i> (Yes)</button>
+                    <button class="feed" id="wrong" onclick="show_thank_you()"><i class="fa fa-times" aria-hidden="true"></i> (No)</button>
+                    <br><br>
+                    <p id="thank_you" style="display: none;"><em>Thank you. You can now proceed to another sample.</em></p>
+
+                </div>
+            </div><!-- /.col-sm-4 -->
+
+
+            <!-- Visualization -->
+            <div class="col-sm-7">
+                <div id="viz"></div>
+            </div><!-- /.col-sm-4 -->
+
+            <!-- Identification Card-->
+            <div class="col-sm-3 well well-sm">
+                <div id="content">
+                    <!-- Personal Card -->
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <!--Bio-->
+                            <div id='bio' class='bio'>
+                                <h4 id='name'></h4>
+                                <div id="info">
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <!-- Profile Picture -->
+                            <div>
+                                <img id='image' src="img/question-mark.jpg" width="100%">
+                            </div>
+                            <div class="divline"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.col-sm-4 -->
+    </div>
+
+</div> <!-- /container -->
+<div>
     <div id="viz"></div>
 </div>
 
 <script src="main.js"></script>
+<script src="functions.js"></script>
 
 </body>
 </html>
