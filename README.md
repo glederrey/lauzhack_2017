@@ -1,7 +1,6 @@
-# Lauzhack 2017
-# Credit Suisse Money Laundering Pattern Recognition Algorithm
+# Lauzhack 2017 - Credit Suisse Money Laundering Pattern Recognition Algorithm
 
-# Introduction
+## Introduction
 
 Our project aims to provide a prototype of a solution for money laundering detection. Our approach is a mixture of heuristics and machine learning and features a combination of unsupervised methods and human supervision.
 
@@ -9,7 +8,7 @@ In general, human supervision has the potential to greatly improve recognition. 
 
 In the following sections, we will first describe the general methodology of our idea and then proceed to the parts we have actually implemented. We will also discuss how our solution can scale with the data.
 
-# Overview of approach
+## Overview of approach
 
 Our approach consists of two parts: an unsupervised, largely rule-based system which detects "suspicious" clients, i.e. those who are, according to our criteria, more likely to be engaged in money laundering, and a feedback part which receives feedback from an expert in the field.
 
