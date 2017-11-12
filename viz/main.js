@@ -37,7 +37,7 @@ var nodes_info,
 
 $.getJSON('../json/nodes.json', function(json) {
     nodes_info = json;
-    $.getJSON('../json/ranked_list2.json', function(json) {
+    $.getJSON('../json/ranked_list_cycle.json', function(json) {
         ranked_list = json;
 
         // Load the ranked list
@@ -54,6 +54,8 @@ $.getJSON('../json/nodes.json', function(json) {
 
         var id = ranked_list[0]["id"];
         var file_fraud = id + ".json";
+        file_fraud = "8d039f06-19cc-40d1-87a7-368790dde5cd.json";
+        id = "8d039f06-19cc-40d1-87a7-368790dde5cd";
 
         main(file_fraud, id, 0);
 
@@ -68,6 +70,8 @@ function main(file_fraud, id, index) {
 
     d3.json("../json/" + file_fraud, function(error, graph) {
         if (error) throw error;
+
+        console.log(graph.links);
 
         nodes = graph.nodes;
         links = graph.links;
