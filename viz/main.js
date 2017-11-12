@@ -2,11 +2,11 @@ var width = 960;
 var height = 600;
 
 // Define the variables for the nodes
-var radius = 6,
-    padding = 1; // Distance between the nodes
+var radius = 8,
+    padding = 5; // Distance between the nodes
 
-var foci = {'source': {"x": 0.4*width, "y": 0.5*height},
-    'target': {"x": 0.6*width, "y": 0.5*height}};
+var foci = {'source': {"x": 0.3*width, "y": 0.5*height},
+    'target': {"x": 0.7*width, "y": 0.5*height}};
 
 var svg = d3.select("div#viz")
     .append("div")
@@ -22,7 +22,7 @@ var simulation = d3.forceSimulation().alphaDecay(0)
 // Decay in velocity in order to avoid the nodes to giggle
     .velocityDecay(0.1)
     // Collision forces in order to avoid overlap
-    .force("collision", d3.forceCollide().radius(radius+2*padding).iterations(5).strength(0.1))
+    .force("collision", d3.forceCollide().radius(radius+padding).iterations(5).strength(0.1))
     .force("link", d3.forceLink().id(function(d) { return d.id; }).distance(100).strength(0));
 
 var nodes;
@@ -32,8 +32,36 @@ var colors = {'suspect': '#FF0000',
     'accomplice': '#FFDD00',
     'usual': '#BFBFBF'};
 
-$.getJSON('../json/nodes.json', function(nodes_info) {
-    d3.json("../json/1.json", function(error, graph) {
+var nodes_info,
+    ranked_list;
+
+$.getJSON('../json/nodes.json', function(json) {
+    nodes_info = json;
+    $.getJSON('../json/ranked_list.json', function(json) {
+        ranked_list = json;
+
+        // Load the ranked list
+        $.each(ranked_list, function(idx) {
+
+            var elem = ranked_list[idx];
+            var id = elem["id"];
+
+            $('#userSelection').append($("<option/>", {
+                value: id,
+                text: nodes_info[id]['first_name'] + " " + nodes_info[id]['last_name']
+            }));
+        });
+
+        var id = ranked_list[0]["id"];
+        var file_fraud = id + ".json";
+
+        main(file_fraud, id);
+
+    });
+});
+
+function main(file_fraud, id) {
+    d3.json("../json/" + file_fraud, function(error, graph) {
         if (error) throw error;
 
         nodes = graph.nodes;
@@ -43,7 +71,12 @@ $.getJSON('../json/nodes.json', function(nodes_info) {
             // Add additional fields in the JSON object
             nodes[i]["x"] = 0.5 * width;
             nodes[i]["y"] = 0.5 * height;
-            nodes[i]["radius"] = radius;
+            if (nodes[i]["id"] == id) {
+                nodes[i]["radius"] = 1.5*radius;
+            } else {
+                nodes[i]["radius"] = radius;
+            }
+
         }
 
         _.each(links, function(link) {
@@ -82,22 +115,66 @@ $.getJSON('../json/nodes.json', function(nodes_info) {
             link.maxSameHalf = Math.floor(maxSame / 3);
         });
 
+        var marker = svg.append("g")
+            .attr("class", "links")
+            .selectAll("marker")
+            .data(graph.links)
+            .enter().append("svg:marker")
+            .attr("id", function(d, i){return i;})
+            .attr("viewBox", "0 -5 10 10")
+            .attr("refX", function(d) {
+                if (d.target == id) {
+                    return -7;
+                } else {
+                    return 18;
+                }
+            })
+            .attr("refY", 0)
+            .attr("markerWidth", 5)
+            .attr("markerHeight", 5)
+            .attr("orient", "auto")
+            .attr("fill", function(d) {return colors[d.tag];})
+            .attr("stroke", function(d) { return "#000000"; })
+            .attr("stroke-width", 2)
+            .attr("opacity", 0)
+            .append("svg:path")
+            .attr("d", "M0,-5L10,0L0,5");
+
         var link = svg.append("g")
             .attr("class", "links")
             .selectAll("line")
             .data(graph.links)
             .enter().append("path")
-            .attr("stroke-width", 2)//function(d) { return Math.sqrt(d.group); })
-            .attr("fill", function(d) {return "none";})
-            .attr("stroke", function(d) { return colors[d.tag]; });
+            .attr("stroke-width", 2)
+            .attr("fill", function() {return "none";})
+            .attr("stroke", function(d) { return colors[d.tag]; })
+            .attr("stroke-width", 2)
+            .attr("opacity", 0)
+            .attr("marker-end", function(d, i) {
+                if (d.target == id) {
+                    return "none";
+                } else {
+                    return "url(#" + i + ")";
+                }
+            })
+            .attr("marker-start", function(d, i) {
+                if (d.source == id) {
+                    return "none";
+                } else {
+                    return "url(#" + i + ")";
+                }
+            });
 
         var node = svg.append("g")
             .attr("class", "nodes")
             .selectAll("circle")
             .data(graph.nodes)
             .enter().append("circle")
-            .attr("r", 5)
+            .attr("r", function(d) { return d.radius; })
             .attr("fill", function(d) { return colors[d.tag]; })
+            .attr("stroke", function(d) { return "#000000"; })
+            .attr("stroke-width", 2)
+            .attr("opacity", 0)
             .call(d3.drag()
                 .on("start", dragstarted)
                 .on("drag", dragged)
@@ -105,8 +182,25 @@ $.getJSON('../json/nodes.json', function(nodes_info) {
             .on("click", clicked)
             .on("mouseover", emphasisAndShowInfo);
 
-        link.append("title")
-            .text(function(d) { return 1;});
+        // Transitions
+
+        node.transition()
+            .duration(function(d, i) {
+                if (i==0) {
+                    return 100;
+                } else {
+                    return 300 + (i+1)*400;
+                }})
+            .attr("opacity", 1);
+
+        link.transition()
+            .duration(function(d, i) {return 300 + (i+2)*400;})
+            .attr("opacity", 1);
+
+        d3.selectAll("marker")
+            .transition()
+            .duration(function(d, i) {return 300 + (i+2)*100;})
+            .attr("opacity", 1);
 
         simulation
             .nodes(graph.nodes)
@@ -126,7 +220,7 @@ $.getJSON('../json/nodes.json', function(nodes_info) {
                 .attr("cy", function(d) { return d.y; });
         }
     });
-})
+}
 
 
 function linkArc(d) {
@@ -140,7 +234,7 @@ function linkArc(d) {
         arc = 0;
     }
 
-    return "M" + d.source.x + "," + d.source.y + "A" + arc + "," + arc + " 0 0," + d.sameArcDirection + " " + d.target.x + "," + d.target.y;
+    return "M" + d.source.x + "," + d.source.y + "A" + arc + "," + 0 + " 0 0," + d.sameArcDirection + " " + d.target.x + "," + d.target.y;
 }
 
 function clicked(d) {

@@ -1,23 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<style>
-
-    .links line {
-        stroke: #999;
-        stroke-opacity: 0.6;
-    }
-
-    .nodes circle {
-        stroke: #fff;
-        stroke-width: 1.5px;
-    }
-
-    #viz {
-        display: inline-block;
-        width: 100%;
-        background:palevioletred;
-    }
-</style>
 <head>
     <meta charset="UTF-8">
     <title>Fraud Detection - Manual Inspection - Credit Suisse @ LauzHack 2017</title>
@@ -53,9 +35,9 @@
 <body>
 
 <div class="jumbotron" id="title">
-    <h1 class="display-3">Swiss Parliament Visualization</h1>
-    <h3>Prototyping a Visualisation of the Swiss Parliament data</h3>
-    <img src="assets/img/logo_high_res.png" width="70%">
+    <h1 class="display-3">Fraud Detection - Manual Labeling</h1>
+    <h3>Credit Suisse Project @ LauzHack</h3>
+    <!--<img src="assets/img/logo_high_res.png" width="70%">-->
 </div>
 
 <div class="container large-container" role="main" id="visualization">
@@ -65,7 +47,12 @@
             <!-- Filter panel -->
             <div class="col-sm-2">
                 <div id="choices">
-
+                    <h4>Ranked List:</h4>
+                    <form name="ranked">
+                        <div class="form-group">
+                            <select class="form-control" id="userSelection" onchange="selectUser($(this))">
+                            </select>
+                        </div>
                 </div>
             </div><!-- /.col-sm-4 -->
 
@@ -83,7 +70,7 @@
                         <div class="col-sm-6">
                             <!--Bio-->
                             <div id='bio' class='bio'>
-                                <h4><a target="_blank" href="" id='name'></a></h4>
+                                <h4 id='name'></h4>
                                 <i class="fa fa-users" aria-hidden="true"></i> <span id='councilorParty'></span>
                                 <br>
                                 <i class="fa fa-home" aria-hidden="true"></i> <span id='councilorCanton'></span>
@@ -94,10 +81,10 @@
                                     id='councilorBirthday'></span>
                             </div>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-6">
                             <!-- Profile Picture -->
                             <div>
-                                <img id='councilorImage' src="img/person-260.jpg" width="100%">
+                                <img id='image' src="img/person-260.jpg" width="100%">
                             </div>
                             <div class="divline"></div>
                         </div>
