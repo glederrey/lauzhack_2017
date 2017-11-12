@@ -47,26 +47,26 @@ $.getJSON('../json/nodes.json', function(json) {
             var id = elem["id"];
 
             $('#userSelection').append($("<option/>", {
-                value: id,
+                value: id + '_' + String(idx),
                 text: nodes_info[id]['first_name'] + " " + nodes_info[id]['last_name']
             }));
         });
 
         var id = ranked_list[0]["id"];
         var file_fraud = id + ".json";
-        var score = ranked_list[0]["score"]
 
-        main(file_fraud, id, score);
+        main(file_fraud, id, 0);
 
     });
 });
 
-function main(file_fraud, id, score) {
+function main(file_fraud, id, index) {
+
     emphasisSuspect(id);
-    document.getElementById("score").innerHTML = round(score);
+    document.getElementById("score").innerHTML = round(ranked_list[index]['score']);
+    document.getElementById("message").innerHTML = ranked_list[index]['message'];
 
     d3.json("../json/" + file_fraud, function(error, graph) {
-        document.getElementById("message").innerHTML = graph.message;
         if (error) throw error;
 
         nodes = graph.nodes;
