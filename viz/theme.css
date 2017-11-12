@@ -1,0 +1,140 @@
+body {
+  padding-top: 70px;
+  padding-bottom: 30px;
+  position: relative;
+}
+
+.theme-dropdown .dropdown-menu {
+  position: static;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.theme-showcase > p > .btn {
+  margin: 5px 0;
+}
+
+.theme-showcase .navbar .container {
+  width: auto;
+  /*margin-left:-200px;*/
+  /*margin-right:-200px;*/
+}
+
+/* Reduce margine*/
+.large-container {
+    padding-right: 0; /*15px in bootstrap.css*/
+    padding-left: 0;  /*idem*/
+    margin-right: 0;
+    margin-left: 2%;
+    width: 95%;
+    margin-top: -65px;
+}
+
+hr {
+    display: block;
+    position: relative;
+    padding: 0;
+    margin: 8px auto;
+    height: 0;
+    width: 100%;
+    max-height: 0;
+    font-size: 1px;
+    line-height: 0;
+    clear: both;
+    border: none;
+    border-top: 1px solid #aaaaaa;
+    border-bottom: 1px solid #ffffff;
+}
+
+.navbar {
+    margin-bottom: 0%;
+}
+
+.jumbotron {
+    margin-top: 0%;
+}
+
+#footer{
+    margin-bottom: -60px;
+    text-align: center;
+}
+
+#title {
+    text-align: center;
+    width: 100%;
+}
+
+h1, h2, h3 {
+    font-weight: bold;
+}
+
+#title {
+    margin-top: -20px;
+}
+
+#about {
+    margin-top: -100px;
+}
+
+.bright-background {
+    background: ghostwhite;
+}
+.input-group {
+    vertical-align: middle;
+    horiz-align: left;
+}
+
+.input-group-addon {
+    vertical-align: middle;
+    horiz-align: left;
+}
+
+.left {
+    horiz-align: left;
+}
+
+.disabled{
+    display: none;
+}
+
+.sub-checkbox {
+    background: ghostwhite;
+}
+
+.awesomplete {
+    width: 100%;
+}
+
+.signature {
+    horiz-align: left;
+}
+
+.copyright {
+    horiz-align: left;
+}
+
+#div_friends {
+    height: 202px;
+}
+
+.title {
+    horiz-align: center;
+}
+
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+#texts {
+    text-align: justify;
+}
+
+#texts_intro {
+    text-align: justify;
+    align: right;
+}
+
+#quote_intro {
+    direction:rtl;
+    text-align:justify;
+}
