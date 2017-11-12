@@ -1,4 +1,4 @@
-# lauzhack_2017
+# Lauzhack 2017
 Credit Suisse Pattern Recognition algorithm
 
 # Introduction
@@ -39,4 +39,4 @@ An essential part of our method is the visualisation of the suspicious lists, wh
 
 ## Results
 
-Our results based on a comparison between actually computed cycles and the suspicious list for the cycle scheme show that this rule-based scheme actually has relatively good recall of the real cycles and also provides us with relatively few suspicious clients, so the method can be expected to be scalable.
+Our results based on a comparison between actually computed cycles and the suspicious list for the cycle scheme show that this rule-based scheme actually has relatively good recall of the real cycles and also provides us with relatively few suspicious clients, so the method can be expected to be scalable. We expect that an implementation using Apache Spark will enable our solution to scale relatively well.
