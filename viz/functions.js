@@ -8,7 +8,7 @@ function emphasisAndShowInfo(node) {
 
     d3.selectAll(".edgelabel")
         .attr("opacity", function(d) {
-            if ((d.source.id == node.id) || (d.target.id == node.id) || (d.tag == "accomplice")) {
+            if ((d.source.id == node.id) || (d.target.id == node.id)) {
                 return 1;
             } else {
                 return 0;

@@ -6,7 +6,8 @@ var radius = 8,
     padding = 5; // Distance between the nodes
 
 var foci = {'source': {"x": 0.3*width, "y": 0.5*height},
-    'target': {"x": 0.7*width, "y": 0.5*height}};
+    'target': {"x": 0.7*width, "y": 0.5*height},
+    'suspect': {"x": 0.5*width, "y": 0.5*height}};
 
 var svg = d3.select("div#viz")
     .append("div")
@@ -23,7 +24,7 @@ var simulation = d3.forceSimulation().alphaDecay(0)
     .velocityDecay(0.1)
     // Collision forces in order to avoid overlap
     .force("collision", d3.forceCollide().radius(radius+padding).iterations(5).strength(0.1))
-    .force("link", d3.forceLink().id(function(d) { return d.id; }).distance(100).strength(0));
+    .force("link", d3.forceLink().id(function(d) { return d.id; }).distance(100).strength(0.05));
 
 var nodes;
 var links;
@@ -70,8 +71,6 @@ function main(file_fraud, id, index) {
 
     d3.json("../json/" + file_fraud, function(error, graph) {
         if (error) throw error;
-
-        console.log(graph.links);
 
         nodes = graph.nodes;
         links = graph.links;
@@ -262,15 +261,6 @@ function main(file_fraud, id, index) {
             .duration(function(d, i) {return 300 + (i+2)*100;})
             .attr("opacity", 1);
 
-        edgelabels.transition()
-            .duration(function(d, i) {return 1000 + (i+2)*100;})
-            .attr("opacity", function(d) {
-                if (d.tag == 'accomplice') {
-                    return 1;
-                } else {
-                    return 0;
-                }});
-
         simulation
             .nodes(graph.nodes)
             .on("tick", ticked);
@@ -309,24 +299,6 @@ function linkArc(d) {
     return "M" + d.source.x + "," + d.source.y + "A" + arc + "," + arc + " 0 0," + d.sameArcDirection + " " + d.target.x + "," + d.target.y;
 }
 
-function linkArcSwp(d, swapped) {
-    var dx = (d.target.x - d.source.x),
-        dy = (d.target.y - d.source.y),
-        dr = Math.sqrt(dx * dx + dy * dy),
-        unevenCorrection = (d.sameUneven ? 0 : 0.5),
-        arc = ((dr * d.maxSameHalf) / (d.sameIndexCorrected - unevenCorrection));
-
-    if (d.sameMiddleLink) {
-        arc = 0;
-    }
-
-    if (swapped == true) {
-        arc = -arc;
-    }
-
-    return "M" + d.source.x + "," + d.source.y + "A" + arc + "," + arc + " 0 0," + d.sameArcDirection + " " + d.target.x + "," + d.target.y;
-}
-
 
 function clicked(d) {
 
@@ -354,7 +326,10 @@ function dragstarted(d) {
 }
 
 function dragged(d) {
-    if (d.type != 'suspect') {
+    if (d.tag == 'suspect') {
+        foci['suspect']['x'] = d3.event.x;
+        foci['suspect']['y'] = d3.event.y;
+    } else {
         d.fx = d3.event.x;
         d.fy = d3.event.y;
     }
@@ -371,14 +346,21 @@ function dragended(d) {
 // Function to apply the gravity on the nodes
 function gravity() {
     return function(d) {
-        if (d.type != 'suspect') {
+        if (d.tag != 'suspect') {
             var alpha,
                 focus_x,
                 focus_y;
 
             // We need to get the focus of the given node
-            focus_x = foci[d.type].x;
-            focus_y = foci[d.type].y;
+            if (d['tag'] == 'source' || d['tag'] == 'target') {
+                focus_x = foci[d.tag].x;
+                focus_y = foci[d.tag].y;
+            }
+            else
+            {
+                focus_x = 0.5 * width;//foci[d.tag].x;
+                focus_y = 0.5 * height;//foci[d.tag].y;
+            }
 
             // Then, we get the intensity of the force
             alpha = 0.005;
@@ -396,8 +378,8 @@ function gravity() {
             //d.x = Math.max(0, Math.min(width, d.x));
             //d.y = Math.max(0, Math.min(width, d.y));
         } else {
-            d.fx = 0.5*width;
-            d.fy = 0.5*height;
+            d.fx = foci['suspect'].x;
+            d.fy = foci['suspect'].y;
         }
 
     };
