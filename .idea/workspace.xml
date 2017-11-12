@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="598bacdb-8ec1-4221-8fc0-508ff6194534" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viz/bootstrap/css/bootstrap-theme.css" afterPath="$PROJECT_DIR$/viz/bootstrap/css/bootstrap-theme.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viz/functions.js" afterPath="$PROJECT_DIR$/viz/functions.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viz/index.html" afterPath="$PROJECT_DIR$/viz/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viz/main.css" afterPath="$PROJECT_DIR$/viz/main.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/json/7da7fe88-98be-4553-b006-6df8bbdb6945.json" afterPath="$PROJECT_DIR$/json/7da7fe88-98be-4553-b006-6df8bbdb6945.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/json/c019c971-bdf3-4fe9-9f71-5d5871d8794c.json" afterPath="$PROJECT_DIR$/json/c019c971-bdf3-4fe9-9f71-5d5871d8794c.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/json/d6af4bd8-f5e2-4419-b0dc-4ec1e31d611a.json" afterPath="$PROJECT_DIR$/json/d6af4bd8-f5e2-4419-b0dc-4ec1e31d611a.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viz/main.js" afterPath="$PROJECT_DIR$/viz/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viz/theme.css" afterPath="$PROJECT_DIR$/viz/theme.css" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -74,8 +71,8 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/viz/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="58" column="8" lean-forward="false" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="8" />
+            <state relative-caret-position="150">
+              <caret line="40" column="26" lean-forward="false" selection-start-line="40" selection-start-column="26" selection-end-line="40" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -266,12 +263,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1510416315713</updated>
-      <workItem from="1510473661033" duration="6330000" />
+      <workItem from="1510473661033" duration="6938000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26793000" />
+    <option name="totallyTimeSpent" value="27401000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="239" y="24" width="1920" height="1050" extended-state="6" />
@@ -584,8 +581,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/viz/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="58" column="8" lean-forward="false" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="8" />
+        <state relative-caret-position="150">
+          <caret line="40" column="26" lean-forward="false" selection-start-line="40" selection-start-column="26" selection-end-line="40" selection-end-column="26" />
           <folding />
         </state>
       </provider>
