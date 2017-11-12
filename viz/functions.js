@@ -96,3 +96,9 @@ String.prototype.hashCode = function() {
 Number.prototype.mod = function(n) {
     return ((this%n)+n)%n;
 };
+
+function show_thank_you() {
+    document.getElementById("thank_you").style.display = 'block';
+
+    return false;
+}

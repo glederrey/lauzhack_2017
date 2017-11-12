@@ -38,7 +38,8 @@
 <div class="jumbotron" id="title">
     <h1 class="display-3">Fraud Detection</h1>
     <h3>Credit Suisse Project @ LauzHack 17</h3>
-    <!--<img src="assets/img/logo_high_res.png" width="70%">-->
+    <img src="img/logo.png" width="50%">
+
 </div>
 
 <div class="container large-container" role="main" id="visualization">
@@ -61,12 +62,10 @@
                     <br>
                     <h4><b>Feedback:</b></h4>
                     <p><em>Is it a real Fraud?</em></p>
-                    <form>
-                        <button class="feed" id="right"><i class="fa fa-check" aria-hidden="true"></i> (Yes)</button>
-                        <button class="feed" id="wrong"><i class="fa fa-times" aria-hidden="true"></i> (No)</button>
-                    </form>
-                    <br>
-                    <p><em>Thank you. You can now proceed to another sample.</em></p>
+                    <button class="feed" id="right" onclick="show_thank_you()"><i class="fa fa-check" aria-hidden="true"></i> (Yes)</button>
+                    <button class="feed" id="wrong" onclick="show_thank_you()"><i class="fa fa-times" aria-hidden="true"></i> (No)</button>
+                    <br><br>
+                    <p id="thank_you" style="display: none;"><em>Thank you. You can now proceed to another sample.</em></p>
 
                 </div>
             </div><!-- /.col-sm-4 -->

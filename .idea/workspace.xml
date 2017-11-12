@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="598bacdb-8ec1-4221-8fc0-508ff6194534" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viz/bootstrap/css/bootstrap-theme.css" afterPath="$PROJECT_DIR$/viz/bootstrap/css/bootstrap-theme.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viz/functions.js" afterPath="$PROJECT_DIR$/viz/functions.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viz/index.html" afterPath="$PROJECT_DIR$/viz/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viz/main.css" afterPath="$PROJECT_DIR$/viz/main.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viz/main.js" afterPath="$PROJECT_DIR$/viz/main.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/viz/theme.css" afterPath="$PROJECT_DIR$/viz/theme.css" />
     </list>
@@ -19,18 +22,20 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/viz/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="68" column="76" lean-forward="false" selection-start-line="68" selection-start-column="76" selection-end-line="68" selection-end-column="76" />
-              <folding />
+            <state relative-caret-position="471">
+              <caret line="94" column="33" lean-forward="true" selection-start-line="94" selection-start-column="33" selection-end-line="94" selection-end-column="33" />
+              <folding>
+                <element signature="n#style#0;n#p#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="groups.json" pinned="false" current-in-tab="true">
+      <file leaf-file-name="groups.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data/groups.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4305">
-              <caret line="0" column="46490" lean-forward="true" selection-start-line="0" selection-start-column="46490" selection-end-line="0" selection-end-column="46490" />
+            <state relative-caret-position="0">
+              <caret line="0" column="2010" lean-forward="false" selection-start-line="0" selection-start-column="2010" selection-end-line="0" selection-end-column="2010" />
               <folding />
             </state>
           </provider>
@@ -39,8 +44,8 @@
       <file leaf-file-name="theme.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/viz/theme.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="246">
-              <caret line="150" column="13" lean-forward="false" selection-start-line="150" selection-start-column="13" selection-end-line="150" selection-end-column="13" />
+            <state relative-caret-position="759">
+              <caret line="58" column="23" lean-forward="true" selection-start-line="58" selection-start-column="23" selection-end-line="58" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -49,7 +54,7 @@
       <file leaf-file-name="ranked_list_cycle.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/json/ranked_list_cycle.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
+            <state relative-caret-position="-90">
               <caret line="0" column="1385" lean-forward="false" selection-start-line="0" selection-start-column="1385" selection-end-line="0" selection-end-column="1385" />
               <folding />
             </state>
@@ -59,18 +64,18 @@
       <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/viz/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3615">
-              <caret line="241" column="0" lean-forward="false" selection-start-line="241" selection-start-column="0" selection-end-line="241" selection-end-column="0" />
+            <state relative-caret-position="173">
+              <caret line="115" column="9" lean-forward="false" selection-start-line="115" selection-start-column="9" selection-end-line="115" selection-end-column="9" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/viz/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="31" column="26" lean-forward="false" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="33" />
+            <state relative-caret-position="375">
+              <caret line="58" column="8" lean-forward="false" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -89,8 +94,8 @@
       <file leaf-file-name="functions.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/viz/functions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-68">
-              <caret line="15" column="11" lean-forward="false" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
+            <state relative-caret-position="471">
+              <caret line="102" column="17" lean-forward="false" selection-start-line="102" selection-start-column="17" selection-end-line="102" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -117,7 +122,15 @@
       <find>console</find>
       <find>foci</find>
       <find>999aeafd-bb36-47d5-9875-bb8271d002b2</find>
+      <find>title</find>
+      <find>row</find>
+      <find>#fefefe</find>
+      <find>col-sm-3</find>
+      <find>well</find>
     </findStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$/viz/bootstrap</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="ROOT_SYNC" value="DONT_SYNC" />
@@ -128,13 +141,13 @@
       <list>
         <option value="$PROJECT_DIR$/code/tugrulz/data_analysis_tj.ipynb" />
         <option value="$PROJECT_DIR$/code/tugrulz/scratch.ipynb" />
-        <option value="$PROJECT_DIR$/viz/main.css" />
         <option value="d3js.org/d3.v4.min.js" />
-        <option value="$PROJECT_DIR$/viz/functions.js" />
         <option value="$PROJECT_DIR$/json/8d039f06-19cc-40d1-87a7-368790dde5cd.json" />
-        <option value="$PROJECT_DIR$/viz/main.js" />
+        <option value="$PROJECT_DIR$/viz/functions.js" />
         <option value="$PROJECT_DIR$/viz/theme.css" />
+        <option value="$PROJECT_DIR$/viz/main.css" />
         <option value="$PROJECT_DIR$/viz/index.html" />
+        <option value="$PROJECT_DIR$/viz/main.js" />
       </list>
     </option>
   </component>
@@ -253,12 +266,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1510416315713</updated>
-      <workItem from="1510473661033" duration="3191000" />
+      <workItem from="1510473661033" duration="6330000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23654000" />
+    <option name="totallyTimeSpent" value="26793000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="239" y="24" width="1920" height="1050" extended-state="6" />
@@ -267,6 +280,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -278,7 +292,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -316,7 +329,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="495">
           <caret line="33" column="31" lean-forward="true" selection-start-line="33" selection-start-column="31" selection-end-line="33" selection-end-column="31" />
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#p#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -379,6 +394,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="0" column="22438" lean-forward="false" selection-start-line="0" selection-start-column="22004" selection-end-line="0" selection-end-column="22438" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -444,7 +460,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="57" column="60" lean-forward="false" selection-start-line="57" selection-start-column="60" selection-end-line="57" selection-end-column="60" />
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#p#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -453,7 +471,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="495">
           <caret line="33" column="31" lean-forward="true" selection-start-line="33" selection-start-column="31" selection-end-line="33" selection-end-column="31" />
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#p#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -484,33 +504,10 @@
     <entry file="file://$PROJECT_DIR$/code/tugrulz/data_analysis_tj.ipynb" />
     <entry file="file://$PROJECT_DIR$/code/tugrulz/scratch.ipynb" />
     <entry file="file://$PROJECT_DIR$/code/gael/data_analysis.ipynb" />
-    <entry file="file://$PROJECT_DIR$/viz/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3615">
-          <caret line="241" column="0" lean-forward="false" selection-start-line="241" selection-start-column="0" selection-end-line="241" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/json/nodes.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="0" column="22438" lean-forward="false" selection-start-line="0" selection-start-column="22004" selection-end-line="0" selection-end-column="22438" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/json/d6af4bd8-f5e2-4419-b0dc-4ec1e31d611a.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="0" column="876" lean-forward="true" selection-start-line="0" selection-start-column="876" selection-end-line="0" selection-end-column="876" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/viz/functions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-68">
-          <caret line="15" column="11" lean-forward="false" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -521,7 +518,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/json/ranked_list_cycle.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
+        <state relative-caret-position="-90">
           <caret line="0" column="1385" lean-forward="false" selection-start-line="0" selection-start-column="1385" selection-end-line="0" selection-end-column="1385" />
           <folding />
         </state>
@@ -535,34 +532,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/viz/main.js">
+    <entry file="file://$PROJECT_DIR$/json/nodes.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="31" column="26" lean-forward="false" selection-start-line="31" selection-start-column="26" selection-end-line="31" selection-end-column="33" />
+        <state relative-caret-position="153">
+          <caret line="0" column="166532" lean-forward="false" selection-start-line="0" selection-start-column="166496" selection-end-line="0" selection-end-column="166532" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/viz/theme.css">
+    <entry file="file://$PROJECT_DIR$/viz/functions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="150" column="13" lean-forward="false" selection-start-line="150" selection-start-column="13" selection-end-line="150" selection-end-column="13" />
+        <state relative-caret-position="471">
+          <caret line="102" column="17" lean-forward="false" selection-start-line="102" selection-start-column="17" selection-end-line="102" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viz/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="115" column="9" lean-forward="false" selection-start-line="115" selection-start-column="9" selection-end-line="115" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/viz/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="68" column="76" lean-forward="false" selection-start-line="68" selection-start-column="76" selection-end-line="68" selection-end-column="76" />
-          <folding />
+        <state relative-caret-position="471">
+          <caret line="94" column="33" lean-forward="true" selection-start-line="94" selection-start-column="33" selection-end-line="94" selection-end-column="33" />
+          <folding>
+            <element signature="n#style#0;n#p#2;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/data/groups.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4305">
-          <caret line="0" column="46490" lean-forward="true" selection-start-line="0" selection-start-column="46490" selection-end-line="0" selection-end-column="46490" />
+        <state relative-caret-position="0">
+          <caret line="0" column="2010" lean-forward="false" selection-start-line="0" selection-start-column="2010" selection-end-line="0" selection-end-column="2010" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viz/theme.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="759">
+          <caret line="58" column="23" lean-forward="true" selection-start-line="58" selection-start-column="23" selection-end-line="58" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viz/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="58" column="8" lean-forward="false" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="8" />
           <folding />
         </state>
       </provider>

@@ -55,8 +55,8 @@ $.getJSON('../json/nodes.json', function(json) {
 
         var id = ranked_list[0]["id"];
         var file_fraud = id + ".json";
-        //file_fraud = "8d039f06-19cc-40d1-87a7-368790dde5cd.json";
-        //id = "8d039f06-19cc-40d1-87a7-368790dde5cd";
+        file_fraud = "8d039f06-19cc-40d1-87a7-368790dde5cd.json";
+        id = "8d039f06-19cc-40d1-87a7-368790dde5cd";
 
         main(file_fraud, id, 0);
 
@@ -64,6 +64,8 @@ $.getJSON('../json/nodes.json', function(json) {
 });
 
 function main(file_fraud, id, index) {
+
+    document.getElementById("thank_you").style.display = 'none';
 
     foci['suspect']['x'] = 0.5*width;
     foci['suspect']['y'] = 0.5*height;
@@ -134,11 +136,7 @@ function main(file_fraud, id, index) {
             .attr("id", function(d, i){return i;})
             .attr("viewBox", "0 -5 10 10")
             .attr("refX", function(d) {
-                if (d.target == id) {
-                    return -7;
-                } else {
-                    return 18;
-                }
+                return 18;
             })
             .attr("refY", 0)
             .attr("markerWidth", 5)
@@ -163,18 +161,7 @@ function main(file_fraud, id, index) {
             .attr("stroke-width", 2)
             .attr("opacity", 0)
             .attr("marker-end", function(d, i) {
-                if (d.target == id) {
-                    return "none";
-                } else {
-                    return "url(#" + i + ")";
-                }
-            })
-            .attr("marker-start", function(d, i) {
-                if (d.source == id) {
-                    return "none";
-                } else {
-                    return "url(#" + i + ")";
-                }
+                return "url(#" + i + ")";
             });
 
         var node = svg.append("g")
@@ -365,7 +352,7 @@ function gravity() {
             {
                 focus_x = 0.5 * width;//foci[d.tag].x;
                 focus_y = 0.5 * height;//foci[d.tag].y;
-                alpha = 0.05;
+                alpha = 0.01;
             }
 
             // Get the distance between the node and its focus
