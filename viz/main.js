@@ -38,7 +38,7 @@ var nodes_info,
 
 $.getJSON('../json/nodes.json', function(json) {
     nodes_info = json;
-    $.getJSON('../json/ranked_list_cycle.json', function(json) {
+    $.getJSON('../json/ranked_list2.json', function(json) {
         ranked_list = json;
 
         // Load the ranked list
@@ -55,8 +55,8 @@ $.getJSON('../json/nodes.json', function(json) {
 
         var id = ranked_list[0]["id"];
         var file_fraud = id + ".json";
-        file_fraud = "8d039f06-19cc-40d1-87a7-368790dde5cd.json";
-        id = "8d039f06-19cc-40d1-87a7-368790dde5cd";
+        //file_fraud = "8d039f06-19cc-40d1-87a7-368790dde5cd.json";
+        //id = "8d039f06-19cc-40d1-87a7-368790dde5cd";
 
         main(file_fraud, id, 0);
 
@@ -64,6 +64,9 @@ $.getJSON('../json/nodes.json', function(json) {
 });
 
 function main(file_fraud, id, index) {
+
+    foci['suspect']['x'] = 0.5*width;
+    foci['suspect']['y'] = 0.5*height;
 
     emphasisSuspect(id);
     document.getElementById("score").innerHTML = round(ranked_list[index]['score']);
@@ -352,18 +355,18 @@ function gravity() {
                 focus_y;
 
             // We need to get the focus of the given node
-            if (d['tag'] == 'source' || d['tag'] == 'target') {
-                focus_x = foci[d.tag].x;
-                focus_y = foci[d.tag].y;
+            if ('type' in d) {
+            //if (d['tag'] == 'source' || d['tag'] == 'target') {
+                focus_x = foci[d.type].x;
+                focus_y = foci[d.type].y;
+                alpha = 0.02;
             }
             else
             {
                 focus_x = 0.5 * width;//foci[d.tag].x;
                 focus_y = 0.5 * height;//foci[d.tag].y;
+                alpha = 0.05;
             }
-
-            // Then, we get the intensity of the force
-            alpha = 0.005;
 
             // Get the distance between the node and its focus
             var dx = focus_x - d.x;

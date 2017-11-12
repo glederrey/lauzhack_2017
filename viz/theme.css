@@ -146,3 +146,18 @@ h1, h2, h3 {
 #message{
     font-style: italic;
 }
+
+.feed {
+    width: 35%;
+    border-radius: 4px;
+}
+
+#right {
+    background-color: #00FF00;
+    border-color: #00FF00;
+}
+
+#wrong {
+    background-color: #FF0000;
+    border-color: #FF0000;
+}
